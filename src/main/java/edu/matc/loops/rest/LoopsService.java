@@ -41,7 +41,6 @@ public class LoopsService {
             @DefaultValue("false") @QueryParam("allowSameCoordinates") boolean allowSameCoordinates,
             @DefaultValue("false") @QueryParam("allowThroughStart") boolean allowThroughStart,
 
-            @DefaultValue("false") @QueryParam("variableNumLegs") boolean variableNumLegs,
             @DefaultValue("false") @QueryParam("variableLegSize") boolean variableLegSize) {
 
         //Check for defaulting value. If default, randomize.
@@ -87,9 +86,6 @@ public class LoopsService {
         logger.debug("allowSameCoordinate:"+allowSameCoordinates);
         loopGenerator.setAllowThroughStart(allowThroughStart);
         logger.debug("allowThroughStart:"+allowThroughStart);
-        loopGenerator.setVariableNumLegs(variableNumLegs);
-        logger.debug("variableNumLegs:"+variableNumLegs);
-        loopGenerator.setVariableLegSize(variableLegSize);
         logger.debug("variableLegSize:"+variableLegSize);
 
         //Generate loops

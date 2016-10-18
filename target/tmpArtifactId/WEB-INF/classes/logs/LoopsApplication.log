@@ -60063,3 +60063,24 @@
 2016-10-18 10:28:07 DEBUG LoopsService:91 - variableNumLegs:false
 2016-10-18 10:28:07 DEBUG LoopsService:93 - variableLegSize:true
 2016-10-18 10:28:07 DEBUG LoopGenerator:138 - Exited with fail count
+2016-10-18 10:29:16 DEBUG LoopsService:50 - Random xSize:60
+2016-10-18 10:29:16 DEBUG LoopsService:54 - Random ySize:90
+2016-10-18 10:29:16 DEBUG LoopsService:58 - Random routeDistance:75
+2016-10-18 10:29:16 DEBUG LoopsService:149 - Common Factor:1
+2016-10-18 10:29:16 DEBUG LoopsService:149 - Common Factor:3
+2016-10-18 10:29:16 DEBUG LoopsService:149 - Common Factor:5
+2016-10-18 10:29:16 DEBUG LoopsService:149 - Common Factor:15
+2016-10-18 10:29:16 DEBUG LoopsService:149 - Common Factor:25
+2016-10-18 10:29:16 DEBUG LoopsService:64 - Random legSize:3
+2016-10-18 10:29:16 DEBUG LoopsService:71 - xSize:60
+2016-10-18 10:29:16 DEBUG LoopsService:73 - ySize:90
+2016-10-18 10:29:16 DEBUG LoopsService:75 - routeDistance:75
+2016-10-18 10:29:16 DEBUG LoopsService:77 - legSize:3
+2016-10-18 10:29:16 DEBUG LoopsService:79 - numLoops:4
+2016-10-18 10:29:16 DEBUG LoopsService:81 - sameFailCount:50
+2016-10-18 10:29:16 DEBUG LoopsService:83 - failCount:5000000
+2016-10-18 10:29:16 DEBUG LoopsService:85 - allowDoubleBack:false
+2016-10-18 10:29:16 DEBUG LoopsService:87 - allowSameCoordinate:false
+2016-10-18 10:29:16 DEBUG LoopsService:89 - allowThroughStart:false
+2016-10-18 10:29:16 DEBUG LoopsService:91 - variableNumLegs:false
+2016-10-18 10:29:16 DEBUG LoopsService:93 - variableLegSize:true
