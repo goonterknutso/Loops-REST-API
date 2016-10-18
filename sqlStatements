@@ -1,0 +1,13 @@
+CREATE DATABASE Loops;
+USE Loops;
+CREATE table Loops (
+xSize int,
+ySize int,
+routeDistance int,
+legSize int,
+numLoops int,
+allowDoubleBack boolean,
+allowSameCoordinates boolean,
+allowThroughStart boolean,
+variableLegSize boolean
+);
