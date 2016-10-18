@@ -1,6 +1,8 @@
 package edu.matc.loops.enitity;
 
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,8 @@ import java.util.List;
  * Created by gunther on 9/16/16.
  */
 public class LoopGenerator {
+
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     private static final int UP = 0;
     private static final int DOWN = 1;
@@ -25,7 +29,6 @@ public class LoopGenerator {
     private int yMin;
 
     private int routeDistance;
-    private int numLegs;
     private int legSize;
     private int numLoops;
 
@@ -45,12 +48,13 @@ public class LoopGenerator {
     public LoopGenerator(){}
 
     public void generateLoops(){
+
         loops = new Loops();
         int sameCounter = 0;
         int failCounter = 0;
         boolean generateLoops = true;
         boolean generateLegs = true;
-        boolean added;
+        boolean added = false;
         int randomDirection;
         int oppositeDirection = Integer.MAX_VALUE;
         Loop loop;
@@ -95,12 +99,18 @@ public class LoopGenerator {
 
                 //Loop complete with correct route distance
                 if(atStart(xCurrent,yCurrent) && (loop.getNumLegs()*loop.getLegLength() == routeDistance)){
+
+                    //Set legSize to 0 if varirableLegSize
+                    if(variableLegSize){ loop.setLegLength(0); }
+
+                    //Try to add loop and set added
                     added = loops.addLoop(loop);
+
                     if(added){
-                        sameFailCount = 0;
-                        failCount = 0;
+                        sameCounter = 0;
+                        failCounter = 0;
                     }else{
-                        sameFailCount++;
+                        sameCounter++;
                     }
                     generateLegs = false;
                 }
@@ -111,7 +121,9 @@ public class LoopGenerator {
                 }
 
                 //Check for variable legsize, change legsize if necessary
-                if(getVariableLegSize()){ legSize = commonFactors.get(randomInt(1,commonFactors.size()/4)); }
+                if(getVariableLegSize()){
+                    legSize = randomInt(1,commonFactors.get(commonFactors.size()-1));
+                }
 
             }
 
@@ -120,12 +132,11 @@ public class LoopGenerator {
                 generateLoops = false;
             }
 
+            //Check fail counters
             if(sameCounter == sameFailCount|| failCounter == failCount){
                 generateLoops = false;
+                logger.debug("Exited with fail count");
             }
-
-            //Check for variable num legs, change num legs if necessary
-            if(getVariableLegSize()){ numLegs = commonFactors.get(randomInt(1,commonFactors.size()/4)); }
 
             failCounter++;
 
@@ -209,7 +220,7 @@ public class LoopGenerator {
 
 
     public int randomInt(int min, int max) {
-        int randomNum = ((min + (int)(Math.random() * ((max - min) + 1)))/5)*5;
+        int randomNum = (min + (int)(Math.random() * ((max - min) + 1)));
         return randomNum;
     }
 
@@ -243,9 +254,6 @@ public class LoopGenerator {
 
     public int getRouteDistance() { return routeDistance; }
     public void setRouteDistance(int routeDistance) { this.routeDistance = routeDistance; }
-
-    public int getNumLegs() { return numLegs; }
-    public void setNumLegs(int numLegs) { this.numLegs = numLegs; }
 
     public int getLegSize() { return legSize; }
     public void setLegSize(int legSize) { this.legSize = legSize; }

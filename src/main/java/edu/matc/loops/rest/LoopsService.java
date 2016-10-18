@@ -18,9 +18,9 @@ import javax.ws.rs.core.Response;
 @Path("/generate")
 public class LoopsService {
 
-    private final static int X_MIN = 20;
+    private final static int X_MIN = 50;
     private final static int X_MAX = 100;
-    private final static int Y_MIN = 20;
+    private final static int Y_MIN = 50;
     private final static int Y_MAX = 100;
 
     private final Logger logger = Logger.getLogger(this.getClass());
@@ -31,56 +31,47 @@ public class LoopsService {
             @DefaultValue("0") @QueryParam("xSize") int xSize,
             @DefaultValue("0") @QueryParam("ySize") int ySize,
             @DefaultValue("0") @QueryParam("routeDistance") int routeDistance,
-            @DefaultValue("0") @QueryParam("numLegs") int numLegs,
             @DefaultValue("0") @QueryParam("legSize") int legSize,
             @DefaultValue("1") @QueryParam("numLoops") int numLoops,
 
-            @DefaultValue("50") @QueryParam("addSameFailCount") int sameFailCount,
-            @DefaultValue("500000") @QueryParam("noAddFailCount") int failCount,
+            @DefaultValue("50") @QueryParam("sameFailCount") int sameFailCount,
+            @DefaultValue("500000") @QueryParam("failCount") int failCount,
 
             @DefaultValue("false") @QueryParam("allowDoubleBack") boolean allowDoubleBack,
             @DefaultValue("false") @QueryParam("allowSameCoordinates") boolean allowSameCoordinates,
             @DefaultValue("false") @QueryParam("allowThroughStart") boolean allowThroughStart,
 
-            @DefaultValue("false") @QueryParam("variableNumLegs") boolean variableNumLegs,
             @DefaultValue("false") @QueryParam("variableLegSize") boolean variableLegSize) {
 
         //Check for defaulting value. If default, randomize.
         if(xSize == 0){
-            xSize = randomInt(X_MIN,X_MAX);
+            xSize = randomMutltipleOfFive(X_MIN,X_MAX);
             logger.debug("Random xSize:"+xSize);
         }
         if(ySize == 0){
-            ySize = randomInt(Y_MIN,Y_MAX);
+            ySize = randomMutltipleOfFive(Y_MIN,Y_MAX);
             logger.debug("Random ySize:"+ySize);
         }
         if(routeDistance == 0){
-            routeDistance = randomInt(xSize,ySize);
+            routeDistance = randomMutltipleOfFive(xSize,ySize);
             logger.debug("Random routeDistance:"+routeDistance);
         }
 
         List<Integer> commonFactors = getFactors(routeDistance);
-        if(numLegs == 0) {
-            numLegs = commonFactors.get(randomInt(1, commonFactors.get(commonFactors.size()-1)/4));
-            logger.debug("Random numLegs:"+numLegs);
-            logger.debug("commonFactors.size()/4:"+ commonFactors.get(commonFactors.size()-1)/4);
-        }
         if(legSize == 0){
-            legSize = commonFactors.get(randomInt(1, commonFactors.get(commonFactors.size()-1)/4));
+            legSize = commonFactors.get(randomInt(1, commonFactors.size()-1));
             logger.debug("Random legSize:"+legSize);
-            logger.debug("commonFactors.size()/4:"+ commonFactors.get(commonFactors.size()-1)/4);
         }
 
         //Setup loop generator
         LoopGenerator loopGenerator = new LoopGenerator();
+
         loopGenerator.setxSize(xSize);
         logger.debug("xSize:"+xSize);
         loopGenerator.setySize(ySize);
         logger.debug("ySize:"+ySize);
         loopGenerator.setRouteDistance(routeDistance);
         logger.debug("routeDistance:"+routeDistance);
-        loopGenerator.setNumLegs(numLegs);
-        logger.debug("numLegs:"+numLegs);
         loopGenerator.setLegSize(legSize);
         logger.debug("legSize:"+legSize);
         loopGenerator.setNumLoops(numLoops);
@@ -95,19 +86,16 @@ public class LoopsService {
         logger.debug("allowSameCoordinate:"+allowSameCoordinates);
         loopGenerator.setAllowThroughStart(allowThroughStart);
         logger.debug("allowThroughStart:"+allowThroughStart);
-        loopGenerator.setVariableNumLegs(variableNumLegs);
-        logger.debug("variableNumLegs:"+variableNumLegs);
-        loopGenerator.setVariableLegSize(variableLegSize);
         logger.debug("variableLegSize:"+variableLegSize);
 
         //Generate loops
         loopGenerator.generateLoops();
         String JSON;
 
-
+        //Convert to JSON
         JSON = convertToJSON(loopGenerator);
 
-
+        //Return response
         return Response
                 .status(200)
                 .entity(JSON).build();
@@ -139,8 +127,13 @@ public class LoopsService {
      * @param max
      * @return
      */
-    public int randomInt(int min, int max) {
+    public int randomMutltipleOfFive(int min, int max) {
         int randomNum = ((min + (int)(Math.random() * ((max - min) + 1)))/5)*5;
+        return randomNum;
+    }
+
+    public int randomInt(int min, int max) {
+        int randomNum = (min + (int)(Math.random() * ((max - min) + 1)));
         return randomNum;
     }
 
