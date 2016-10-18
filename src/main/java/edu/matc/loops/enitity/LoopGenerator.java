@@ -291,25 +291,28 @@ public class LoopGenerator {
 
     //Output Methods for Terminal
 
-    /*
-    public void writeLoopsToTerminal(){
 
-        //Loop Info
-        System.out.println("------------LOOP INFO-------------");
-        System.out.println();
-        System.out.println("Route Distance:  " + routeDistance);
-        System.out.println("Leg Length:      " + legLength);
-        System.out.println("Number of Loops: " + loops.getLoops().size());
-        System.out.println();
-        System.out.println("----------------------------------");
-        System.out.println();
+    public String generatedLoopsToHTML(){
 
-        //Print all coordinates first
-        System.out.println("::Coordinates::");
-        System.out.println();
-        for(Loop l: loops.getLoops()){
+        String HTML = "<body>";
+        HTML += "<h1>Generated Loops</h1>";
+        HTML += "<div id='info'>";
+
+        HTML += "<table>";
+
+        for(int i = 0; i < loops.getLoops().size(); i++){
+
+            HTML += "<tr><td colspan=2><h2>Loop #"+i+"</h2></td></tr>";
+            HTML += "";
+            HTML += "<tr><td><b> </b></td><td> </td></tr>";
+
+
+
             for(Coordinate c : l.getCoordinates()){
+
+
                 System.out.print("(");
+
                 if(c.getX() < 10){
                     System.out.print(" "+c.getX());
                 }else{
@@ -334,7 +337,7 @@ public class LoopGenerator {
         for(int l = 0; l < loops.getLoops().size(); l++){
             writeLoopToTerminal(loops.getLoop(l));
         }
-    }*/
+    }
 
     /*
     private void writeLoopToTerminal(Loop loop){
