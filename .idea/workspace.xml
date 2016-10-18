@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b20a59cd-7cb8-4a3e-9e9b-52fae4b9de3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/matc/loops/enitity/LoopGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/edu/matc/loops/enitity/LoopGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/matc/loops/rest/LoopsService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/matc/loops/rest/LoopsService.java" />
     </list>
     <ignored path="Loops-REST-API-.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +25,7 @@
     <favorites_list name="Loops-REST-API-" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4420158">
+    <splitter split-orientation="horizontal" split-proportion="0.38433516">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="LoopsApplication.java" pinned="false" current-in-tab="false">
@@ -41,13 +41,13 @@
           <file leaf-file-name="LoopsService.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/rest/LoopsService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+                <state relative-caret-position="1506">
+                  <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-                    <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-                    <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
+                    <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+                    <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
                     <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
                     <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
                   </folding>
@@ -59,11 +59,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="LoopGenerator.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="LoopGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/enitity/LoopGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="412">
-                  <caret line="306" column="33" selection-start-line="306" selection-start-column="33" selection-end-line="306" selection-end-column="33" />
+                <state relative-caret-position="304">
+                  <caret line="309" column="63" selection-start-line="309" selection-start-column="63" selection-end-line="309" selection-end-column="63" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="docComment;method#checkDirection#0;class#LoopGenerator#0" expanded="false" />
@@ -90,11 +90,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FireDBHelper.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FireDBHelper.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/persistance/FireDBHelper.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="282">
-                  <caret line="110" column="34" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+                <state relative-caret-position="588">
+                  <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -955,12 +955,12 @@
       <workItem from="1476803634890" duration="845000" />
       <workItem from="1476807026194" duration="5506000" />
       <workItem from="1476813428785" duration="2982000" />
-      <workItem from="1476817157421" duration="802000" />
+      <workItem from="1476817157421" duration="1171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22536000" />
+    <option name="totallyTimeSpent" value="22905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -1036,8 +1036,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-            <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
             <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
             <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
           </folding>
@@ -1126,8 +1126,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-            <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
             <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
             <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
           </folding>
@@ -1208,8 +1208,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-            <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
             <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
             <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
           </folding>
@@ -1274,8 +1274,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-            <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
             <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
             <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
           </folding>
@@ -1372,10 +1372,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/rest/LoopsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1506">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
+            <element signature="docComment;method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomMultipleOfFive#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
+            <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/persistance/FireDBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/enitity/LoopGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="306" column="33" selection-start-line="306" selection-start-column="33" selection-end-line="306" selection-end-column="33" />
+        <state relative-caret-position="304">
+          <caret line="309" column="63" selection-start-line="309" selection-start-column="63" selection-end-line="309" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#checkDirection#0;class#LoopGenerator#0" expanded="false" />
@@ -1387,29 +1410,6 @@
             <element signature="method#getFactors#0;class#LoopGenerator#0" expanded="false" />
             <element signature="method#setxSize#0;class#LoopGenerator#0" expanded="false" />
             <element signature="method#setySize#0;class#LoopGenerator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/persistance/FireDBHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="110" column="34" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/matc/loops/rest/LoopsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#convertToJSON#0;class#LoopsService#0" expanded="false" />
-            <element signature="docComment;method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomMutltipleOfFive#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#randomInt#0;class#LoopsService#0" expanded="false" />
-            <element signature="method#getFactors#0;class#LoopsService#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -45,15 +45,15 @@ public class LoopsService {
 
         //Check for defaulting value. If default, randomize.
         if(xSize == 0){
-            xSize = randomMutltipleOfFive(X_MIN,X_MAX);
+            xSize = randomMultipleOfFive(X_MIN,X_MAX);
             logger.debug("Random xSize:"+xSize);
         }
         if(ySize == 0){
-            ySize = randomMutltipleOfFive(Y_MIN,Y_MAX);
+            ySize = randomMultipleOfFive(Y_MIN,Y_MAX);
             logger.debug("Random ySize:"+ySize);
         }
         if(routeDistance == 0){
-            routeDistance = randomMutltipleOfFive(xSize,ySize);
+            routeDistance = randomMultipleOfFive(xSize,ySize);
             logger.debug("Random routeDistance:"+routeDistance);
         }
 
@@ -127,7 +127,7 @@ public class LoopsService {
      * @param max
      * @return
      */
-    public int randomMutltipleOfFive(int min, int max) {
+    public int randomMultipleOfFive(int min, int max) {
         int randomNum = ((min + (int)(Math.random() * ((max - min) + 1)))/5)*5;
         return randomNum;
     }

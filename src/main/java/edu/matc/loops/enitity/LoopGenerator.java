@@ -304,7 +304,13 @@ public class LoopGenerator {
 
             HTML += "<tr><td colspan=2><h2>Loop #"+i+"</h2></td></tr>";
             HTML += "";
-            HTML += "<tr><td><b> </b></td><td> </td></tr>";
+            HTML += "<tr><td><b>X Size:</b></td><td>"+xSize+"</td></tr>";
+            HTML += "<tr><td><b>Y Size:</b></td><td>"+ySize+"</td></tr>";
+            HTML += "<tr><td><b>Route Distance:</b></td><td>"+routeDistance+"</td></tr>";
+            HTML += "<tr><td><b>Leg Size:</b></td><td>"+legSize+"</td></tr>";
+            HTML += "<tr><td><b>Number of Loops:</b></td><td>"+numLoops+"</td></tr>";
+            HTML += "<tr><td><b>Same Fail Count:</b></td><td>"+sameFailCount+"</td></tr>";
+            HTML += "<tr><td><b>Fail Count:</b></td><td>"+failCount+"</td></tr>";
 
 
 
