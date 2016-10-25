@@ -55,6 +55,7 @@ public class LoopGenerator {
         boolean generateLoops = true;
         boolean generateLegs = true;
         boolean added = false;
+        //whats up here
         int randomDirection;
         int oppositeDirection = Integer.MAX_VALUE;
         Loop loop;

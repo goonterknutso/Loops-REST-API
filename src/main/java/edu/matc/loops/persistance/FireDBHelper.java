@@ -1,5 +1,5 @@
 package edu.matc.loops.persistance;
-
+/*
 import edu.matc.loops.enitity.*;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,10 +11,10 @@ import net.thegreshams.firebase4j.service.Firebase;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
+*/
 
 public class FireDBHelper {
-
+/*
     private String firebase_baseURL = "https://loopme-144918.firebaseio.com/";
     Firebase firebase;
 
@@ -134,5 +134,5 @@ public class FireDBHelper {
         } catch(UnsupportedEncodingException e){
             System.out.println("Error: Unsupported Encoding Exception");
         }
-    }
+    }*/
 }
