@@ -9,13 +9,10 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-@Path("/generate")
+@Path("/loops")
 public class LoopsService {
 
     private final static int X_MIN = 50;
@@ -25,12 +22,14 @@ public class LoopsService {
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
+    LoopGenerator loopGenerator;
+
     //Testing URL
-    //http://localhost:8080/generate/loops?xSize=100&ySize=100&routeDistance=100&legSize=5&numLoops=2
+    //http://localhost:8080/service/loops/generateQuery?xSize=100&ySize=100&routeDistance=100&legSize=5&numLoops=2&returnType=HTML
 
     @GET
-    @Path("/loops")
-    public Response getLoops(
+    @Path("/generateQuery")
+    public Response getLoopsQuery(
             @DefaultValue("0") @QueryParam("xSize") int xSize,
             @DefaultValue("0") @QueryParam("ySize") int ySize,
             @DefaultValue("0") @QueryParam("routeDistance") int routeDistance,
@@ -47,6 +46,43 @@ public class LoopsService {
             @DefaultValue("false") @QueryParam("variableLegSize") boolean variableLegSize,
 
             @DefaultValue("") @QueryParam("returnType") String returnType) {
+
+        Response queryResponse = getLoopsResponse(xSize,ySize,routeDistance,legSize,numLoops,sameFailCount,failCount,
+                allowDoubleBack, allowSameCoordinates,allowThroughStart,
+                variableLegSize, returnType);
+        return queryResponse;
+
+    }
+
+    @POST
+    @Path("/generateForm")
+    public Response getLoopsForm(
+            @DefaultValue("0") @FormParam("xSize") int xSize,
+            @DefaultValue("0") @FormParam("ySize") int ySize,
+            @DefaultValue("0") @FormParam("routeDistance") int routeDistance,
+            @DefaultValue("0") @FormParam("legSize") int legSize,
+            @DefaultValue("1") @FormParam("numLoops") int numLoops,
+
+            @DefaultValue("50") @FormParam("sameFailCount") int sameFailCount,
+            @DefaultValue("500000") @FormParam("failCount") int failCount,
+
+            @DefaultValue("false") @FormParam("allowDoubleBack") boolean allowDoubleBack,
+            @DefaultValue("false") @FormParam("allowSameCoordinates") boolean allowSameCoordinates,
+            @DefaultValue("false") @FormParam("allowThroughStart") boolean allowThroughStart,
+
+            @DefaultValue("false") @FormParam("variableLegSize") boolean variableLegSize,
+
+            @DefaultValue("") @FormParam("returnType") String returnType) {
+
+        Response formResponse = getLoopsResponse(xSize,ySize,routeDistance,legSize,numLoops,sameFailCount,failCount,
+                                                 allowDoubleBack, allowSameCoordinates,allowThroughStart,
+                                                 variableLegSize, returnType);
+        return formResponse;
+    }
+
+    private Response getLoopsResponse(int xSize, int ySize, int routeDistance, int legSize, int numLoops,
+                                      int sameFailCount, int failCount, boolean allowDoubleBack, boolean allowSameCoordinates,
+                                       boolean allowThroughStart, boolean variableLegSize, String returnType){
 
         //Check for defaulting value. If default, randomize.
         if(xSize == 0){
@@ -69,7 +105,7 @@ public class LoopsService {
         }
 
         //Setup loop generator
-        LoopGenerator loopGenerator = new LoopGenerator();
+        loopGenerator = new LoopGenerator();
 
         loopGenerator.setxSize(xSize);
         loopGenerator.setySize(ySize);
@@ -120,6 +156,8 @@ public class LoopsService {
 
     }
 
+
+
     private String convertToJSON(Object o){
         //Convert loops to JSON string
         try {
@@ -142,9 +180,9 @@ public class LoopsService {
     private String convertToHTML(LoopGenerator loopGenerator){
         //Test loop generator:
         String html = "";
-        html += getHTMLInfo(loopGenerator);
-        html += getHTMLCoordinatesAll(loopGenerator);
-        html += getHTMLGrids(loopGenerator);
+        html += getHTMLInfo();
+        html += getHTMLCoordinatesAll();
+        html += getHTMLGrids();
         return html;
     }
 
@@ -152,7 +190,7 @@ public class LoopsService {
 
 
 
-    private String getHTMLInfo(LoopGenerator loopGenerator){
+    private String getHTMLInfo(){
         //Loop Info
         String html = "";
         html += "<div>";
@@ -175,19 +213,19 @@ public class LoopsService {
         return html;
     }
 
-    private String getHTMLCoordinatesAll(LoopGenerator loopGenerator){
+    private String getHTMLCoordinatesAll(){
         String html="";
         //Coordinates
         html += "<div>";
         html += "<h2>Coordinates</h2>";
         for(Loop l: loopGenerator.getLoops().getLoops()){
-            html += getHTMLCoordinates(l, loopGenerator);
+            html += getHTMLCoordinates(l);
         }
         html += "</div>";
         return html;
     }
 
-    private String getHTMLCoordinates(Loop loop, LoopGenerator loopGenerator){
+    private String getHTMLCoordinates(Loop loop){
         String html = "";
         html += "<table>";
         for(Coordinate c : loop.getCoordinates()){
@@ -198,7 +236,7 @@ public class LoopsService {
         return html;
     }
 
-    private String getHTMLGrids(LoopGenerator loopGenerator){
+    private String getHTMLGrids(){
         String html="";
         String[][] grid;
 
@@ -212,9 +250,9 @@ public class LoopsService {
 
         int i = 1;
         for(Loop l: loopGenerator.getLoops().getLoops()){
-            html += getHTMLCoordinates(l, loopGenerator);
+            html += getHTMLCoordinates(l);
 
-            grid = getHTMLGridForLoop(l, loopGenerator);
+            grid = getHTMLGridForLoop(l);
 
             html += "<table class='grid'>";
             for(int y = 0; y < loopGenerator.getySize(); y++){
@@ -233,7 +271,7 @@ public class LoopsService {
         return html;
     }
 
-    private String[][] getHTMLGridForLoop(Loop loop, LoopGenerator loopGenerator){
+    private String[][] getHTMLGridForLoop(Loop loop){
 
         int xSize = loopGenerator.getxSize();
         int ySize = loopGenerator.getySize();
